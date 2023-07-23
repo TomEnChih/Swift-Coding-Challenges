@@ -87,3 +87,35 @@ func challenge3(string1: String, string2: String) -> Bool {
     return true
 }
 ```
+
+---
+
+# Challenge 4: Does one string contain another?
+
+- Difficulty: Easy
+- Time: 10 min 10 sec
+- 思路: 是否包含，重要的是順序及字母是否相同，藉由index迴圈判斷當index相同時加1，當index==words.count-1 時，代表完全吻合
+
+```swift =
+extension String {
+    func fuzzyContains(_ word: String) -> Bool {
+        let array = Array(self.lowercased())
+        let words = Array(word.lowercased())
+        
+        var index = 0
+        
+        for char in array {
+            
+            if char == words[index] {
+                
+                if index == words.count-1 { return true }
+                index += 1
+                
+            } else {
+                index == 0
+            }
+        }
+        return false
+    }
+}
+```
