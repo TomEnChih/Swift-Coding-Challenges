@@ -119,3 +119,26 @@ extension String {
     }
 }
 ```
+
+---
+
+# Challenge 5: Count the characters
+
+- Difficulty: Easy
+- Time: 4 min 34 sec
+- 思路：for-in 遍歷所有 words ，如果符合就 +1，最後得出答案
+- 另外思路：可以反向思考，移除 words 裡的 letter ，之後比較移除前後的數量
+
+```swift =
+func countOfChar(letter: Character ,in words: String) -> Int {
+    
+    var count = 0
+    
+    for word in words {
+        if word == letter {
+            count += 1
+        }
+    }
+    return count
+}
+```
