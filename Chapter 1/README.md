@@ -142,3 +142,25 @@ func countOfChar(letter: Character ,in words: String) -> Int {
     return count
 }
 ```
+---
+
+# Challenge 6: Remove duplicate letters from a string
+
+- Difficulty: Easy
+- Time: 8 min 45 sec
+- 思路：for-in 遍歷所有 letter ，沒有重複就 append 進 outputs
+- 另外思路：可以嘗試使用 Filter + Dictionary 篩選
+
+```swift =
+func challenge6(input: String) -> String {
+    
+    var outputs: [Character] = []
+    
+    for char in input {
+        if !outputs.contains(char) {
+            outputs.append(char)
+        }
+    }
+    return String(outputs)
+}
+```
