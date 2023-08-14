@@ -164,3 +164,31 @@ func challenge6(input: String) -> String {
     return String(outputs)
 }
 ```
+
+---
+
+# Challenge 7: Condense whitespace
+
+- Difficulty: Easy
+- Time: 17 min 34 sec
+- 思路：for-in 所有 character，不為 " " 就加入，為 " " 時，跟前者比較，相同就不加入 
+
+```swift =
+func removeMutiWhitespace(input: String) -> String {
+    let inputs = Array(input)
+    var outputs: Array<Character> = []
+    
+    for input in inputs {
+        if outputs.isEmpty {
+            outputs.append(input)
+        } else if let last = outputs.last {
+            if input != " " {
+                outputs.append(input)
+            } else if input != last {
+                outputs.append(input)
+            }
+        }
+    }
+    return outputs.map { String($0) }.joined()
+}
+```
