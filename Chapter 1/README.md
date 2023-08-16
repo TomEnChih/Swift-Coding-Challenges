@@ -192,3 +192,44 @@ func removeMutiWhitespace(input: String) -> String {
     return outputs.map { String($0) }.joined()
 }
 ```
+---
+
+# Challenge 8: String is rotated
+- Difficulty: Tricky
+- Time: 22 min 27 sec
+- 思路：先找出第一個 character，比較 character 在兩個 String 的位置，在依照順序開始比較(錯誤)
+- 另外思路：rotated 只不過是把其中一段 String 改變位置，移到最前方來，因此只要把 string + string 就可以滿足所有情況
+
+(錯誤) 有重複字的 string 會失敗
+ex.
+abacba
+cbaaba
+```swift =
+func isRotated(string1: String, string2: String) -> Bool {
+    
+    if string1.count != string2.count { return false }
+    if string1 == "" { return true }
+    
+    let array1 = Array(string1)
+    let array2 = Array(string2)
+    
+    guard let index = array2.firstIndex(of: array1.first!) else { return false }
+    
+    var currentIndex = index
+    for i in 1..<array1.count {
+        if currentIndex+1 == array2.count { currentIndex = -1 }
+        if array1[i] != array2[currentIndex+1] { return false }
+        currentIndex += 1
+    }
+    return true
+}
+```
+
+正確
+```swift =
+func isRotated(string1: String, string2: String) -> Bool {
+    guard string1.count == string2.count else { return false }
+    let allAnswer = string1 + string1
+    return allAnswer.contains(string2)
+}
+```
