@@ -233,3 +233,29 @@ func isRotated(string1: String, string2: String) -> Bool {
     return allAnswer.contains(string2)
 }
 ```
+---
+
+# Challenge 9: Condense whitespace
+
+- Difficulty: Tricky
+- Time: 15 min 34 sec
+- 思路：先統一大小寫，移除掉空白後，透過 set 篩選掉重複的字母，最後進行比較
+
+```swift =
+func challenge9(input: String) -> Bool {
+    let correctAnswer: [String.Element] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    let answer = input.lowercased().replacing(" ", with: "")
+    return Set(answer) == Set(correctAnswer)
+}
+```
+
+特別寫法
+```swift =
+func challenge9(input: String) -> Bool {
+   let set = Set(input.lowercased())
+   let letters = set.filter { $0 >= "a" && $0 <= "z" }
+   return letters.count == 26
+}
+```
+---
+
